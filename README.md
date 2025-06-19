@@ -5,6 +5,12 @@
 This project implements a data pipeline using the **Medallion architecture** (Bronze, Silver, Gold) in **Databricks**, consuming data from the public API [Open Brewery DB](https://www.openbrewerydb.org/).
 
 ## 🏗️ Architecture
+![Architecture Diagram](medallion_architecture.png)
+
+/Unity Catalog/breweries_analytics/  
+├── bronze/breweries.json  
+├── silver/breweries_transformed (Delta table partitioned by state)  
+└── gold/breweries_aggregated (Delta table view with the count aggregated by type and location)
 
 - **Bronze:** Raw data from the API.
 - **Silver:** Cleaned data, partitioned by state (`state`).
@@ -15,13 +21,6 @@ This project implements a data pipeline using the **Medallion architecture** (Br
 - Databricks + Delta Lake  
 - PySpark  
 - Python (requests, pandas)   
-
-## 🗺️ Data Lake Architecture
-/Unity Catalog/breweries_analytics/  
-├── bronze/breweries.json  
-├── silver/breweries_transformed (Delta table partitioned by state)  
-└── gold/breweries_aggregated (Delta table view with the count aggregated by type and location)
-
 
 ## 🚀 Notebooks Execution
 
